@@ -101,7 +101,10 @@ class AlignDlib:
         assert rgbImg is not None
 
         try:
-            return self.detector(rgbImg, 1)
+            # WARNING: second param affect performance
+            # see https://github.com/cmusatyalab/openface/issues/85#issuecomment-226892506
+            # for details
+            return self.detector(rgbImg, 0)
         except Exception as e:
             print("Warning: {}".format(e))
             # In rare cases, exceptions are thrown.
